@@ -1,5 +1,11 @@
 .list {
   margin-bottom: 30px;
+  $self: &;
+  &__remove-icon {
+    opacity: 0;
+    height: 15px;
+    width: 15px;
+  }
 
   &__add-button {
     span {
@@ -12,12 +18,25 @@
       }
     }
   }
+  
 
   li {
     display: flex;
     align-items: center;
     padding: 10px 12px;
     cursor: pointer;
+
+    &:hover #{$self}__remove-icon {
+      opacity: 0.2;
+    } 
+    #{$self}__remove-icon:hover {
+      opacity: 1;
+    }
+   
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.6)
+    }
 
     &.active {
       background: #ffffff;
@@ -29,7 +48,9 @@
       position: relative;
       left: 3px;
     }
-
+    span {
+      flex: 1;
+    }
 
 
     i {
@@ -48,50 +69,8 @@
   }
 }
 
+
+
 //////////////////AddListButton
 
 
-.add-list {
-
-  &__popup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 235px;
-    height: 148px;
-    background: #FFFFFF;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    position: relative;
-    top: -25px;
-    left: -10px;
-    &-close-btn{
-      height: 19px;
-      width: 19px;
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      cursor: pointer;
-    }
-
-    &-colors {
-      display: flex;
-      justify-content: space-between;
-      width: 200px;
-      
-
-      .badge {
-        width: 18px;
-        height: 18px;
-        position: static;
-        cursor: pointer;
-        transition: none;
-        &.active {
-          border: 2px solid grey;
-        }
-      }
-    }
-  }
-
-}

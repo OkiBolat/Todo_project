@@ -1,60 +1,70 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react'
-import List from './components/List/list';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import listSvg from './assets/img/Vector.svg'
-import AddListButton from './components/List/AddListButton';
-import DB from './assets/db.json';
+////////////////////////////////////////////////
+import { List, AddListButton, Tasks } from './components/point';
+// import DB from '../src/assets/db.json'
+///////////////////////////////////////////////////
 
 export default function App() {
-  // 
 
-  return <div className='todo'>
-    <div className='todo__sidebar'>
-      <List items={[
-        {
-          icon: <img src={listSvg} alt='list icon' />,
-          name: 'Все задачи',
-          active: true,
+  const [lists, setLists] = useState(null);
+  const [colors, setColors] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({ data }) => {
+      setLists(data)
+      console.log(data)
+    });
+      axios.get('http://localhost:3001/colors').then(({ data }) => {
+    setColors(data)
+      })
+    }, []);
+
+    
+    const onAddList = obj => {
+      const newList = [
+        ...lists, obj
+      ]
+      setLists(newList);
+
+    }
+  
+
+
+
+    return <div className='todo'>
+      <div className='todo__sidebar'>
+        <List items={[
+          {
+            icon: <img src={listSvg} alt='list icon' />,
+            name: 'Все задачи',
+            active: true,
+          }
+
+        ]
+
         }
 
-      ]
+        ></List>
+        {lists? (<List onRemove={id => {
+          const newList = lists.filter(item => item.id !== id);
+          setLists(newList)
+        }} items={lists} 
+          isRemovable >
+
+        </List>) : ('Загрузка...')}
+        <AddListButton onAdd={onAddList} colors={colors}></AddListButton>
+      </div>
+      <div className='todo__tasks'>
+       {lists && <Tasks list ={lists[1]}>
+
+        </Tasks>}
+      </div>
+    </div>;
+
+
 
       }
-      
-      ></List>
-      <List items={[
-        {
-          color: "green",
-          name: 'Покупки',
-        },
-        {
-          color: "blue",
-          name: 'Фронтенд'
-        },
-        {
-          color: "purple",
-          name: 'Фильмы и сериалы'
-        },
-        {
-          color: "lime",
-          name: 'Книги'
-        },
-        {
-          color: "grey",
-          name: 'Личное'
-        }
-
-      ]
-
-      }
-        isRemovable >
-
-      </List>
-      <AddListButton colors={DB.colors}></AddListButton>
-    </div>
-    <div className='todo__tasks'></div>
-  </div>;
-
-
-
-}
+  

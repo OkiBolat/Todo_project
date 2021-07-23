@@ -1,5 +1,5 @@
 * {
-  font-family:'Roboto', -apple-system, system-ui, sans-serif;
+  font-family: 'Roboto', -apple-system, system-ui, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,17 +20,19 @@ body {
 }
 
 .todo {
+  display: flex;
   position: absolute;
   left: 50%;
   top: 50%;
   width: 750px;
-  height: 530px;
+  min-height: 530px;
   transform: translate(-50%, -50%);
   border: 1px solid #F1F1F1;
   border-radius: 10px;
   box-shadow: 1px 2px 30px #f3f3f3;
   font-size: 14px;
-  &__sidebar{
+
+  &__sidebar {
     background-color: #E5E5E5;
     width: 200px;
     height: 100%;
@@ -38,9 +40,10 @@ body {
     padding: 60px 20px;
   }
 
-
+  
 
 }
+
 ///
 .icon_add {
   height: 12px;
@@ -49,29 +52,33 @@ body {
 
 
 .field {
-width: 200px;
-height: 32px;
-background: #FFFFFF;
-border: 1px solid #EFEFEF;
-box-sizing: border-box;
-border-radius: 4px;
-padding: 11px 7px;
-transition: 0.2s;
-&:hover {
-  border-color: #C9D1D3;
+  width: 200px;
+  height: 32px;
+  background: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 11px 7px;
+  transition: 0.2s;
+
+  &:hover {
+    border-color: #C9D1D3;
+  }
 }
-}
+
 .button {
-width: 200px;
-height: 37px;
-background: #4DD599;
-color:white;
-border-radius: 4px;
-border-color: transparent;
-&:hover {
-  background: darken(#4DD599, 5%)
-}
-&:active {
-  background: darken(#4DD599, 10%)
-}
+  width: 200px;
+  height: 37px;
+  background: #4DD599;
+  color: white;
+  border-radius: 4px;
+  border-color: transparent;
+
+  &:hover {
+    background: darken(#4DD599, 5%)
+  }
+
+  &:active {
+    background: darken(#4DD599, 10%)
+  }
 }

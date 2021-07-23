@@ -1,9 +1,0 @@
-import React from 'react'
-import classNames from 'classname'
-
-import './Badge.scss'
-
-export default function Badge({color, onClick, className}){
-    return <i onClick={onClick} className={classNames("badge", {[`badge--${color}`] : color}, className)} ></i>
-}
-// className={`badge badge--${color}`}
