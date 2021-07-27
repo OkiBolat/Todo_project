@@ -40,7 +40,7 @@ body {
     padding: 60px 20px;
   }
 
-  
+
 
 }
 
@@ -52,6 +52,7 @@ body {
 
 
 .field {
+  font-size: 14px;
   width: 200px;
   height: 32px;
   background: #FFFFFF;
@@ -73,6 +74,22 @@ body {
   color: white;
   border-radius: 4px;
   border-color: transparent;
+  font-size: 14px;
+
+  &--grey {
+    width: 90px;
+    height: 37px;
+    left: 409px;
+    top: 360px;
+    margin-left: 9px;
+    color:#4444;
+    &:hover{
+      background: darken($color: #F4F6F8, $amount: 10%)
+    }
+
+    background: #F4F6F8;
+    border-radius: 4px;
+  }
 
   &:hover {
     background: darken(#4DD599, 5%)
@@ -80,5 +97,26 @@ body {
 
   &:active {
     background: darken(#4DD599, 10%)
+  }
+  &:disabled{
+    background-color:#C9D1D3;
+  }
+  &--grey {
+    width: 90px;
+    height: 37px;
+    left: 409px;
+    top: 360px;
+    margin-left: 9px;
+    color:#444444;
+    &:hover{
+      background: darken($color: #F4F6F8, $amount: 3%);
+    
+    }
+    &:active {
+      background: darken($color: #F4F6F8, $amount: 6%);
+    }
+
+    background: #F4F6F8;
+    border-radius: 4px;
   }
 }
